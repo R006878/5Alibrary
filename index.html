@@ -86,21 +86,14 @@ const PFX = 'lib_sys_';
 const K_BOOKS = PFX+'books', K_USERS = PFX+'users', K_BORROWS = PFX+'borrows', K_AUDITS = PFX+'audits', K_CFG = PFX+'sb_config';
 
 // Data stored in Supabase only
+const SB_URL = 'https://gllddpgugoigqyizqsjr.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsbGRkcGd1Z29pZ3F5aXpxc2pyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExNDIxMTgsImV4cCI6MjA5NjcxODExOH0.GqEkxSe3jbodDtZ049i2zSnFk-V9IaCQN9LBPJ42v7Q';
 function getCfg() {
-  try { const d = localStorage.getItem(K_CFG); if(d) { const p=JSON.parse(d); return {url:p.url||'',anonKey:p.anonKey||'',isConnected:!!p.isConnected}; } } catch(e){}
-  return {url:'',anonKey:'',isConnected:false};
+  try { const d = localStorage.getItem(K_CFG); if(d) { const p=JSON.parse(d); return {url:p.url||SB_URL,anonKey:p.anonKey||SB_KEY,isConnected:true}; } } catch(e){}
+  return {url:SB_URL,anonKey:SB_KEY,isConnected:true};
 }
-let _sbClient = null;
-function getSB() {
-  const c = getCfg();
-  if (c.isConnected && c.url && c.anonKey) {
-    if (!_sbClient) {
-      try { _sbClient = supabase.createClient(c.url, c.anonKey, {auth:{persistSession:false}}); } catch(e){ return null; }
-    }
-    return _sbClient;
-  }
-  return null;
-}
+let _sbClient = supabase.createClient(SB_URL, SB_KEY, {auth:{persistSession:false}});
+function getSB() { return _sbClient; }
 async function testSBConfig(url, anonKey) {
   if (!url||!anonKey) return {success:false,error:'網址與 Anon Key 不能為空'};
   try {
