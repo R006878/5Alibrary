@@ -21,7 +21,7 @@
     }
   </script>
   <style>
-    body { font-family: 'Noto Sans TC', sans-serif; background-color: #1a2a1a; background-image: radial-gradient(ellipse at 15% 20%, rgba(34,85,34,0.18) 0%, transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(20,60,20,0.15) 0%, transparent 50%); }
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8f9fa; }
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
     .animate-spin { animation: spin 1s linear infinite; }
@@ -31,7 +31,7 @@
     select option { font-family: 'Noto Sans TC', sans-serif; }
   </style>
 </head>
-<body style="background-color:#1a2a1a">
+<body style="background-color:#f8f9fa">
   <div id="root"></div>
 
 <script type="text/babel">
@@ -235,7 +235,7 @@ function LoginScreen({onLoginSuccess, users}) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 px-4 font-sans" style={{backgroundColor:"#1a2a1a"}}>
+    <div className="min-h-screen flex flex-col justify-center py-12 px-4 font-sans" style={{backgroundColor:"#f8f9fa"}}>
       <div className="mx-auto w-full max-w-md">
         <div className="flex justify-center">
           <div className="p-3 rounded-2xl shadow-lg text-white" style={{background:"linear-gradient(135deg,#1a4a1a,#4a8a4a)"}}>
@@ -246,7 +246,7 @@ function LoginScreen({onLoginSuccess, users}) {
         <p className="mt-2 text-center text-sm" style={{color:"#5a8a5a"}}>請以七碼員工編號登入以點閱與辦理借還</p>
       </div>
       <div className="mt-8 mx-auto w-full max-w-md">
-        <div className="py-8 px-6 shadow-sm rounded-xl" style={{background:"#162616",border:"1px solid #3a6a3a"}}>
+        <div className="py-8 px-6 shadow-sm rounded-xl" style={{background:"#f0f9f0",border:"1px solid #d1e7d1"}}>
           <form className="space-y-5" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md flex items-start gap-2">
@@ -258,7 +258,7 @@ function LoginScreen({onLoginSuccess, users}) {
               <label className="block text-sm font-medium text-gray-200">員工編號 (限定 7 碼)</label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icons.UserCheck size={18} cls="text-gray-500"/></div>
-                <input type="text" required maxLength={7} className="block w-full pl-10 pr-3 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#0d1f0d",border:"1px solid #3a6a3a",color:"#c8e6c8"}} placeholder="範例: 0804431" value={empId} onChange={e=>setEmpId(e.target.value.replace(/[^a-zA-Z0-9]/g,''))}/>
+                <input type="text" required maxLength={7} className="block w-full pl-10 pr-3 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#ffffff",border:"1px solid #9dc49d",color:"#1a1a1a"}} placeholder="範例: 0804431" value={empId} onChange={e=>setEmpId(e.target.value.replace(/[^a-zA-Z0-9]/g,''))}/>
               </div>
               <p className="mt-1 text-xs text-gray-500">目前輸入 {empId.length}/7 碼</p>
             </div>
@@ -266,8 +266,8 @@ function LoginScreen({onLoginSuccess, users}) {
               <label className="block text-sm font-medium text-gray-200">密碼</label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icons.Lock size={18} cls="text-gray-500"/></div>
-                <input type={showPwd?'text':'password'} required className="block w-full pl-10 pr-10 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#0d1f0d",border:"1px solid #3a6a3a",color:"#c8e6c8"}} placeholder="請輸入您的密碼" value={password} onChange={e=>setPassword(e.target.value)}/>
-                <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" style={{color:"#6aaa6a"}} onClick={()=>setShowPwd(!showPwd)}>
+                <input type={showPwd?'text':'password'} required className="block w-full pl-10 pr-10 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#ffffff",border:"1px solid #9dc49d",color:"#1a1a1a"}} placeholder="請輸入您的密碼" value={password} onChange={e=>setPassword(e.target.value)}/>
+                <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={()=>setShowPwd(!showPwd)}>
                   {showPwd ? <Icons.EyeOff size={18} cls="text-gray-500"/> : <Icons.Eye size={18} cls="text-gray-500"/>}
                 </button>
               </div>
@@ -316,24 +316,24 @@ function SupabaseConfigModal({isOpen, onClose, onConfigChanged}) {
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex items-center justify-center min-h-screen p-4">
         <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm" onClick={onClose}/>
-        <div className="relative rounded-xl shadow-2xl w-full max-w-2xl" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+        <div className="relative rounded-xl shadow-2xl w-full max-w-2xl" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
           <div className="bg-slate-50 px-6 py-4 border-b flex items-center justify-between">
             <h3 className="text-lg font-bold text-white flex items-center gap-2"><Icons.Database size={18} cls="text-indigo-600"/> Supabase 雲端資料庫設定</h3>
             <button onClick={onClose} className="text-slate-400 hover:text-slate-600 cursor-pointer"><Icons.X size={18}/></button>
           </div>
           <div className="px-6 py-6 space-y-5 max-h-[70vh] overflow-y-auto">
-            <div className="p-4 rounded-lg flex gap-3 text-sm" style={{background:"#1a2a0a",border:"1px solid #5a7a2a",color:"#c8d8a8"}}>
+            <div className="p-4 rounded-lg flex gap-3 text-sm" style={{background:"#fffbeb",border:"1px solid #fbbf24",color:"#92400e"}}>
               <Icons.Info size={18} cls="text-amber-500 shrink-0 mt-0.5"/>
               <div>本應用支援 <strong>LocalStorage 本機</strong>與 <strong>Supabase 雲端同步</strong>兩種模式。貼入金鑰後可多人即時同步。</div>
             </div>
             <div className="space-y-3">
               <div>
                 <label className="block text-sm font-semibold text-gray-200">Supabase 專案網址</label>
-                <input type="text" className="mt-1 block w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="https://your-project-id.supabase.co" value={url} onChange={e=>setUrl(e.target.value)}/>
+                <input type="text" className="mt-1 block w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="https://your-project-id.supabase.co" value={url} onChange={e=>setUrl(e.target.value)}/>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-200">Anon Key / Public API Key</label>
-                <input type="password" className="mt-1 block w-full px-3 py-2 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." value={anonKey} onChange={e=>setAnonKey(e.target.value)}/>
+                <input type="password" className="mt-1 block w-full px-3 py-2 border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-green-500" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." value={anonKey} onChange={e=>setAnonKey(e.target.value)}/>
               </div>
             </div>
             {msg && <div className={`p-4 rounded-lg text-sm border ${msg.isErr?'bg-red-50 text-red-800 border-red-200':'bg-green-50 text-green-800 border-green-200'}`}>{msg.text}</div>}
@@ -341,7 +341,7 @@ function SupabaseConfigModal({isOpen, onClose, onConfigChanged}) {
               <button disabled={testing||!url||!anonKey} onClick={handleTest} className="flex-1 py-2 px-4 disabled:opacity-50 text-white rounded-lg text-sm font-semibold cursor-pointer flex items-center justify-center gap-2" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>
                 {testing && <Icons.Loader2 size={14}/>} 連線測試並儲存
               </button>
-              {connected && <button onClick={handleDisconnect} className="py-2 px-4 text-rose-400 border border-rose-800 rounded-lg text-sm font-semibold cursor-pointer" style={{background:"#2a1010"}}>切回離線模式</button>}
+              {connected && <button onClick={handleDisconnect} className="py-2 px-4 text-rose-600 border border-rose-300 rounded-lg text-sm font-semibold cursor-pointer bg-rose-50">切回離線模式</button>}
             </div>
             <div className="border-t pt-5 space-y-3">
               <div className="flex items-center justify-between">
@@ -357,8 +357,8 @@ function SupabaseConfigModal({isOpen, onClose, onConfigChanged}) {
               <pre className="p-3 bg-slate-900 text-slate-300 text-[10px] font-mono rounded-lg overflow-x-auto max-h-40 leading-relaxed">{SUPABASE_SQL}</pre>
             </div>
           </div>
-          <div className="px-6 py-4 flex justify-end border-t" style={{background:"#162616",borderColor:"#3a6a3a"}}>
-            <button onClick={onClose} className="px-4 py-2 border text-sm font-semibold rounded-lg cursor-pointer" style={{borderColor:"#3a6a3a",color:"#a8d5a8",background:"#162616"}}>關閉</button>
+          <div className="px-6 py-4 flex justify-end border-t" style={{background:"#f0f9f0",borderColor:"#d1e7d1"}}>
+            <button onClick={onClose} className="px-4 py-2 border text-sm font-semibold rounded-lg cursor-pointer" style={{borderColor:"#9dc49d",color:"#2d6a2d",background:"#ffffff"}}>關閉</button>
           </div>
         </div>
       </div>
@@ -435,21 +435,21 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
       ) : viewMode==='grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map(b=>(
-            <div key={b.id} className="rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+            <div key={b.id} className="rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
               <div className="p-5 space-y-4">
                 <div className="flex items-start justify-between">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-gray-300">{b.category||'未分類'}</span>
                   <span className="text-xs font-mono font-semibold text-gray-500">編號: {b.id}</span>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-bold text-white text-base line-clamp-2" title={b.title}>{b.title}</h3>
+                  <h3 className="font-bold text-gray-900 text-base line-clamp-2" title={b.title}>{b.title}</h3>
 
                 </div>
                 <div className="pt-2 border-t border-slate-50 flex items-center justify-between text-xs text-gray-500">
 
                 </div>
               </div>
-              <div className="px-5 py-3.5 border-t flex items-center justify-between text-xs" style={{background:"#162616",borderColor:"#3a6a3a"}}>
+              <div className="px-5 py-3.5 border-t flex items-center justify-between text-xs" style={{background:"#f0f9f0",borderColor:"#d1e7d1"}}>
                 <StatusBadge book={b}/>
                 <ActionBtn book={b}/>
               </div>
@@ -457,20 +457,20 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl overflow-hidden" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+        <div className="rounded-2xl overflow-hidden" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-100">
-              <thead className="text-xs font-bold" style={{background:"#162616",color:"#6aaa6a"}}>
+              <thead className="text-xs font-bold" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                 <tr>
                   {['書籍編號','圖書名稱','分類','目前狀態','操作'].map((h,i)=><th key={i} scope="col" className={`px-6 py-3.5 ${i===4?'text-right':'text-left'}`}>{h}</th>)}
                 </tr>
               </thead>
-              <tbody className="divide-y text-xs" style={{background:"#1e301e",color:"#a8c8a8",borderColor:"#2a4a2a"}}>
+              <tbody className="divide-y text-xs" style={{background:"#ffffff",color:"#1a1a1a",borderColor:"#d1e7d1"}}>
                 {filtered.map(b=>(
-                  <tr key={b.id} className="hover:bg-green-950">
+                  <tr key={b.id} className="hover:bg-green-50">
                     <td className="px-6 py-4 font-mono font-bold text-gray-400">{b.id}</td>
-                    <td className="px-6 py-4"><div className="font-bold text-white text-sm">{b.title}</div></td>
-                    <td className="px-6 py-4"><span className="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-green-900 text-green-300">{b.category}</span></td>
+                    <td className="px-6 py-4"><div className="font-bold text-gray-900 text-sm">{b.title}</div></td>
+                    <td className="px-6 py-4"><span className="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">{b.category}</span></td>
                     <td className="px-6 py-4"><StatusBadge book={b}/></td>
                     <td className="px-6 py-4 text-right"><ActionBtn book={b}/></td>
                   </tr>
@@ -510,20 +510,20 @@ function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLo
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-1 space-y-6">
-        <div className="p-6 rounded-2xl space-y-4" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+        <div className="p-6 rounded-2xl space-y-4" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
           <div className="flex items-center gap-4">
             <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600"><Icons.User size={22}/></div>
-            <div><h3 className="font-bold text-white text-lg">{currentUser.name}</h3><p className="text-xs text-slate-400 font-mono">員工編號: {currentUser.employeeId}</p></div>
+            <div><h3 className="font-bold text-gray-900 text-lg">{currentUser.name}</h3><p className="text-xs text-slate-400 font-mono">員工編號: {currentUser.employeeId}</p></div>
           </div>
           <div className="border-t pt-4 space-y-2 text-xs">
             <div className="flex justify-between"><span className="text-gray-500">系統角色</span><span className={`px-2 py-0.5 rounded font-bold ${currentUser.role==='admin'?'bg-rose-50 text-rose-700':'bg-slate-100 text-slate-700'}`}>{currentUser.role==='admin'?'系統管理者':'一般同仁'}</span></div>
-            <div className="flex justify-between"><span className="text-gray-500">目前借用數</span><span className="font-bold text-white">{myBooks.length} 冊</span></div>
+            <div className="flex justify-between"><span className="text-gray-500">目前借用數</span><span className="font-bold text-gray-900">{myBooks.length} 冊</span></div>
           </div>
           <button onClick={onLogout} className="w-full py-2 px-4 font-bold rounded-lg text-xs cursor-pointer" style={{background:"#162616",color:"#a8d5a8",border:"1px solid #3a6a3a"}}>登出系統</button>
         </div>
 
-        <div className="p-6 rounded-2xl space-y-4" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
-          <h3 className="font-bold text-white text-sm flex items-center gap-2"><Icons.Key size={16} cls="text-indigo-500"/> 自身密碼更改</h3>
+        <div className="p-6 rounded-2xl space-y-4" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
+          <h3 className="font-bold text-gray-900 text-sm flex items-center gap-2"><Icons.Key size={16} cls="text-indigo-500"/> 自身密碼更改</h3>
           <form onSubmit={handlePwdSubmit} className="space-y-3">
             {[['目前密碼','原核定密碼',oldPwd,setOldPwd],['新設定密碼','新密碼 (≥6碼)',newPwd,setNewPwd],['重複新密碼','再次輸入',confirmPwd,setConfirmPwd]].map(([label,ph,val,setter])=>(
               <div key={label}>
@@ -532,7 +532,7 @@ function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLo
               </div>
             ))}
             {statusMsg && <div className={`p-3 rounded-lg text-xs flex gap-1.5 border items-start ${statusMsg.isErr?'bg-rose-50 text-rose-800 border-rose-200':'bg-green-50 text-green-800 border-green-200'}`}>{statusMsg.isErr?<Icons.AlertCircle size={14} cls="text-rose-500 shrink-0"/>:<Icons.Check size={14} cls="text-green-500 shrink-0"/>}<span>{statusMsg.text}</span></div>}
-            <button type="submit" disabled={updating} className="w-full py-2 text-white font-bold rounded-lg text-xs cursor-pointer flex items-center justify-center gap-1.5" style={{background:"#2d6a2d"}}>
+            <button type="submit" disabled={updating} className="w-full py-2 text-white font-bold rounded-lg text-xs cursor-pointer flex items-center justify-center gap-1.5" style={{background:"#2d6a2d",color:"#ffffff"}}>
               {updating&&<Icons.RefreshCw size={12} cls="animate-spin"/>} 更新新密碼
             </button>
           </form>
@@ -540,7 +540,7 @@ function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLo
       </div>
 
       <div className="lg:col-span-2">
-        <div className="p-6 rounded-2xl min-h-96" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+        <div className="p-6 rounded-2xl min-h-96" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
           <h3 className="text-base font-bold flex items-center gap-2 mb-4" style={{color:"#a8d5a8"}}><Icons.Calendar size={18} cls="text-indigo-600"/> 我的目前借調圖書</h3>
           {myBooks.length===0 ? (
             <div className="py-16 text-center text-slate-400 space-y-2">
@@ -557,7 +557,7 @@ function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLo
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-mono font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded">{b.id}</span>
-                        <h4 className="font-bold text-white text-sm line-clamp-1">{b.title}</h4>
+                        <h4 className="font-bold text-gray-900 text-sm line-clamp-1">{b.title}</h4>
                       </div>
                       
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-semibold text-gray-400">
@@ -565,7 +565,7 @@ function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLo
                         <span className={`flex items-center gap-1 ${overdue?'text-red-600 font-bold':''}`}><Icons.Calendar size={12}/> 預還: {b.dueDate}{overdue?' (已逾期!)':''}</span>
                       </div>
                     </div>
-                    <button onClick={()=>onReturnBook(b.id)} className="px-4 py-1.5 text-white font-bold rounded-lg text-xs cursor-pointer whitespace-nowrap" style={{background:"#2d6a2d"}}>立即辦理還書</button>
+                    <button onClick={()=>onReturnBook(b.id)} className="px-4 py-1.5 text-white font-bold rounded-lg text-xs cursor-pointer whitespace-nowrap" style={{background:"#2d6a2d",color:"#ffffff"}}>立即辦理還書</button>
                   </div>
                 );
               })}
@@ -660,9 +660,9 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
 
   return (
     <div className="space-y-6">
-      <div className="p-2 rounded-xl flex flex-wrap gap-1" style={{background:"#162616",border:"1px solid #3a6a3a"}}>
+      <div className="p-2 rounded-xl flex flex-wrap gap-1" style={{background:"#f0f9f0",border:"1px solid #d1e7d1"}}>
         {tabs.map(t=>(
-          <button key={t.k} onClick={()=>{setTab(t.k);setIsAuditing(false);}} style={tab===t.k?{background:'linear-gradient(135deg,#1a4a1a,#2d6a2d)',color:'#c8e6c8'}:{}} className={`flex-1 py-2.5 px-4 rounded-lg font-bold text-xs tracking-wide cursor-pointer transition-all flex items-center justify-center gap-1.5 ${tab===t.k?'':'text-stone-600 hover:bg-amber-50'}`}>
+          <button key={t.k} onClick={()=>{setTab(t.k);setIsAuditing(false);}} style={tab===t.k?{background:'#2d6a2d',color:'#ffffff'}:{}} className={`flex-1 py-2.5 px-4 rounded-lg font-bold text-xs tracking-wide cursor-pointer transition-all flex items-center justify-center gap-1.5 ${tab===t.k?'':'text-gray-700 hover:bg-green-50'}`}>
             {t.icon}{t.label}
           </button>
         ))}
@@ -674,7 +674,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-white p-5 rounded-xl border border-slate-100">
             <div className="relative flex-1">
               <Icons.Search size={16} cls="text-slate-400 absolute left-3 top-3"/>
-              <input type="text" placeholder="輸入書名或書籍編號快速篩選..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={bookSearch} onChange={e=>setBookSearch(e.target.value)}/>
+              <input type="text" placeholder="輸入書名或書籍編號快速篩選..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={bookSearch} onChange={e=>setBookSearch(e.target.value)}/>
             </div>
             <button onClick={()=>{setEditingBookId(null);setBookForm({id:'',title:'',category:'內科',status:'available'});setShowBookForm(!showBookForm);}} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start sm:self-auto" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>
               <Icons.Plus size={14}/> 新增書籍
@@ -686,48 +686,48 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
               <h3 className="text-sm font-bold text-white">{editingBookId?`正在編輯圖書: ${editingBookId}`:'新增一冊圖書到資料庫'}</h3>
               <form onSubmit={handleBookSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div><label className="block text-gray-300 mb-1 font-semibold">書籍編號 *</label><input type="text" required disabled={!!editingBookId} className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-indigo-500 disabled:bg-slate-100" placeholder="如: B00114" value={bookForm.id} onChange={e=>setBookForm({...bookForm,id:e.target.value.toUpperCase()})}/></div>
-                <div className="md:col-span-2"><label className="block text-gray-300 mb-1 font-semibold">書籍名稱 *</label><input type="text" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="深入淺出設計模式" value={bookForm.title} onChange={e=>setBookForm({...bookForm,title:e.target.value})}/></div>
+                <div className="md:col-span-2"><label className="block text-gray-300 mb-1 font-semibold">書籍名稱 *</label><input type="text" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="深入淺出設計模式" value={bookForm.title} onChange={e=>setBookForm({...bookForm,title:e.target.value})}/></div>
 
                 <div><label className="block text-gray-300 mb-1 font-semibold">類別學門</label>
-                  <select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={bookForm.category} onChange={e=>setBookForm({...bookForm,category:e.target.value})}>
+                  <select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={bookForm.category} onChange={e=>setBookForm({...bookForm,category:e.target.value})}>
                     {['內科','外科','教學','其他'].map(c=><option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
 
                 <div><label className="block text-gray-300 mb-1 font-semibold">初始流通狀態</label>
-                  <select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={bookForm.status} onChange={e=>setBookForm({...bookForm,status:e.target.value})}>
+                  <select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={bookForm.status} onChange={e=>setBookForm({...bookForm,status:e.target.value})}>
                     <option value="available">在庫 (Available)</option>
                     <option value="maintenance">保養維修 (Maintenance)</option>
                     <option value="lost">報失 (Lost)</option>
                   </select>
                 </div>
                 <div className="md:col-span-3 flex justify-end gap-2.5 pt-2">
-                  <button type="button" onClick={()=>{setShowBookForm(false);setEditingBookId(null);}} className="px-4 py-2 border rounded-lg cursor-pointer" style={{borderColor:"#3a6a3a",color:"#a8d5a8",background:"#162616"}}>取消</button>
+                  <button type="button" onClick={()=>{setShowBookForm(false);setEditingBookId(null);}} className="px-4 py-2 border rounded-lg cursor-pointer" style={{borderColor:"#9dc49d",color:"#2d6a2d",background:"#ffffff"}}>取消</button>
                   <button type="submit" className="px-5 py-2 text-white rounded-lg font-bold cursor-pointer" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>儲存書籍</button>
                 </div>
               </form>
             </div>
           )}
 
-          <div className="rounded-xl overflow-hidden" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="rounded-xl overflow-hidden" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-100 text-xs text-gray-200">
-                <thead className="font-bold text-left" style={{background:"#162616",color:"#6aaa6a"}}>
+                <thead className="font-bold text-left" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                   <tr>{['圖書編號','圖書標題規格','分類','狀態','現有借閱人','變更操作'].map((h,i)=><th key={i} scope="col" className={`px-6 py-3 ${i===5?'text-right':''}`}>{h}</th>)}</tr>
                 </thead>
-                <tbody className="divide-y" style={{background:"#1e301e",borderColor:"#2a4a2a"}}>
+                <tbody className="divide-y" style={{background:"#ffffff",borderColor:"#d1e7d1"}}>
                   {books.filter(b=>{const sq=bookSearch.toLowerCase();return !sq||b.id.toLowerCase().includes(sq)||b.title.toLowerCase().includes(sq);}).map(b=>(
-                    <tr key={b.id} className="hover:bg-green-950">
+                    <tr key={b.id} className="hover:bg-green-50">
                       <td className="px-6 py-3 font-mono font-bold text-gray-400">{b.id}</td>
-                      <td className="px-6 py-3"><span className="font-bold text-white text-[13px]">{b.title}</span></td>
+                      <td className="px-6 py-3"><span className="font-bold text-gray-900 text-[13px]">{b.title}</span></td>
                       <td className="px-6 py-3"><span className="inline-block px-1.5 py-0.5 bg-green-900 border border-green-700 rounded text-[10px] text-green-300 font-bold">{b.category}</span></td>
                       <td className="px-6 py-3">
-                        {{available:<span className="text-emerald-300 bg-emerald-900 px-1.5 py-0.5 rounded font-bold">在庫</span>,borrowed:<span className="text-blue-300 bg-blue-900 px-1.5 py-0.5 rounded font-bold">借出</span>,maintenance:<span className="text-amber-300 bg-amber-900 px-1.5 py-0.5 rounded font-bold">保養</span>,lost:<span className="text-red-300 bg-red-900 px-1.5 py-0.5 rounded font-bold">遺失</span>}[b.status]}
+                        {{available:<span className="text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded font-bold">在庫</span>,borrowed:<span className="text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded font-bold">借出</span>,maintenance:<span className="text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded font-bold">保養</span>,lost:<span className="text-red-700 bg-red-100 px-1.5 py-0.5 rounded font-bold">遺失</span>}[b.status]}
                       </td>
                       <td className="px-6 py-3">{b.borrowerId?<div><span className="font-semibold text-gray-200">{b.borrowerName}</span><div className="text-slate-400 font-mono text-[10px]">員編: {b.borrowerId}</div></div>:<span className="text-gray-500">-</span>}</td>
                       <td className="px-6 py-3 text-right">
                         <div className="flex items-center justify-end gap-1.5">
-                          <button onClick={()=>startEditBook(b)} className="p-1 rounded cursor-pointer" style={{color:"#6aaa6a"}}><Icons.Edit3 size={16}/></button>
+                          <button onClick={()=>startEditBook(b)} className="p-1 rounded cursor-pointer" style={{color:"#4a8a4a"}}><Icons.Edit3 size={16}/></button>
                           <button onClick={()=>{if(confirm(`確定要刪除《${b.title}》嗎？`))onDeleteBook(b.id);}} className="p-1 text-rose-400 hover:text-rose-600 hover:bg-rose-50 rounded cursor-pointer"><Icons.Trash2 size={16}/></button>
                         </div>
                       </td>
@@ -746,7 +746,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-white p-5 rounded-xl border border-slate-100">
             <div className="relative flex-1">
               <Icons.Search size={16} cls="text-slate-400 absolute left-3 top-3"/>
-              <input type="text" placeholder="輸入同仁姓名或員編快速搜尋..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={userSearch} onChange={e=>setUserSearch(e.target.value)}/>
+              <input type="text" placeholder="輸入同仁姓名或員編快速搜尋..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={userSearch} onChange={e=>setUserSearch(e.target.value)}/>
             </div>
             <button onClick={()=>{setUserFormErr('');setUserForm({employeeId:'',name:'',role:'user',password:''});setShowUserForm(!showUserForm);}} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start sm:self-auto" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>
               <Icons.Plus size={14}/> 新增同仁帳號
@@ -757,28 +757,28 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
             <div className="bg-white p-6 border border-indigo-100 shadow-md rounded-xl space-y-4">
               <h3 className="text-sm font-bold text-white">登錄新的成員帳戶</h3>
               <form onSubmit={handleUserSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
-                <div><label className="block text-gray-300 mb-1 font-semibold">員工編號 (7 碼) *</label><input type="text" required maxLength={7} className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 font-mono" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="0804431" value={userForm.employeeId} onChange={e=>setUserForm({...userForm,employeeId:e.target.value.replace(/[^a-zA-Z0-9]/g,'')})}/><p className="text-[10px] text-slate-400 mt-1">{userForm.employeeId.length}/7 碼</p></div>
-                <div><label className="block text-gray-300 mb-1 font-semibold">同仁姓名 *</label><input type="text" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="王大明" value={userForm.name} onChange={e=>setUserForm({...userForm,name:e.target.value})}/></div>
-                <div><label className="block text-gray-300 mb-1 font-semibold">帳號密碼 *</label><input type="password" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="預留密碼" value={userForm.password} onChange={e=>setUserForm({...userForm,password:e.target.value})}/></div>
-                <div><label className="block text-gray-300 mb-1 font-semibold">身分角色</label><select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={userForm.role} onChange={e=>setUserForm({...userForm,role:e.target.value})}><option value="user">一般同仁</option><option value="admin">系統管理員</option></select></div>
+                <div><label className="block text-gray-300 mb-1 font-semibold">員工編號 (7 碼) *</label><input type="text" required maxLength={7} className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 font-mono" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="0804431" value={userForm.employeeId} onChange={e=>setUserForm({...userForm,employeeId:e.target.value.replace(/[^a-zA-Z0-9]/g,'')})}/><p className="text-[10px] text-slate-400 mt-1">{userForm.employeeId.length}/7 碼</p></div>
+                <div><label className="block text-gray-300 mb-1 font-semibold">同仁姓名 *</label><input type="text" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="王大明" value={userForm.name} onChange={e=>setUserForm({...userForm,name:e.target.value})}/></div>
+                <div><label className="block text-gray-300 mb-1 font-semibold">帳號密碼 *</label><input type="password" required className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="預留密碼" value={userForm.password} onChange={e=>setUserForm({...userForm,password:e.target.value})}/></div>
+                <div><label className="block text-gray-300 mb-1 font-semibold">身分角色</label><select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-green-500 cursor-pointer" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={userForm.role} onChange={e=>setUserForm({...userForm,role:e.target.value})}><option value="user">一般同仁</option><option value="admin">系統管理員</option></select></div>
                 {userFormErr && <div className="md:col-span-4 p-3 bg-red-50 text-red-800 rounded-lg text-xs flex items-center gap-1.5"><Icons.AlertTriangle size={14} cls="text-red-500"/>{userFormErr}</div>}
                 <div className="md:col-span-4 flex justify-end gap-2.5">
-                  <button type="button" onClick={()=>setShowUserForm(false)} className="px-4 py-2 border rounded-lg cursor-pointer" style={{borderColor:"#3a6a3a",color:"#a8d5a8",background:"#162616"}}>取消</button>
+                  <button type="button" onClick={()=>setShowUserForm(false)} className="px-4 py-2 border rounded-lg cursor-pointer" style={{borderColor:"#9dc49d",color:"#2d6a2d",background:"#ffffff"}}>取消</button>
                   <button type="submit" className="px-5 py-2 text-white rounded-lg font-bold cursor-pointer" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>確認加入</button>
                 </div>
               </form>
             </div>
           )}
 
-          <div className="rounded-xl overflow-hidden" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="rounded-xl overflow-hidden" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-100 text-xs text-gray-200">
-                <thead className="font-bold text-left" style={{background:"#162616",color:"#6aaa6a"}}>
+                <thead className="font-bold text-left" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                   <tr>{['員工編號','姓名','分權角色','系統密碼','註冊日期','操作'].map((h,i)=><th key={i} scope="col" className={`px-6 py-3 ${i===5?'text-right':''}`}>{h}</th>)}</tr>
                 </thead>
-                <tbody className="divide-y" style={{background:"#1e301e",borderColor:"#2a4a2a"}}>
+                <tbody className="divide-y" style={{background:"#ffffff",borderColor:"#d1e7d1"}}>
                   {users.filter(u=>{const sq=userSearch.toLowerCase();return !sq||u.employeeId.toLowerCase().includes(sq)||u.name.toLowerCase().includes(sq);}).map(u=>(
-                    <tr key={u.employeeId} className="hover:bg-green-950">
+                    <tr key={u.employeeId} className="hover:bg-green-50">
                       <td className="px-6 py-3 font-mono font-bold text-slate-800">{u.employeeId}</td>
                       <td className="px-6 py-3 font-semibold">{u.name}</td>
                       <td className="px-6 py-3"><span className={`px-2 py-0.5 rounded text-[10px] font-bold ${u.role==='admin'?'bg-rose-100 text-rose-800':'bg-slate-100 text-slate-700'}`}>{u.role==='admin'?'管理員':'一般同仁'}</span></td>
@@ -797,41 +797,41 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
       {/* TAB: BORROWS */}
       {tab==='borrows' && (
         <div className="space-y-4">
-          <div className="p-5 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="p-5 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="flex flex-wrap items-center gap-3 text-xs">
               <div className="font-semibold text-slate-700 flex items-center gap-1"><Icons.FileText size={16} cls="text-indigo-600"/> 自訂匯出期限範圍:</div>
               <div className="flex items-center gap-1.5">
-                <input type="date" className="px-2.5 py-1.5 border rounded-lg focus:outline-none text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={exportStart} onChange={e=>setExportStart(e.target.value)}/>
+                <input type="date" className="px-2.5 py-1.5 border rounded-lg focus:outline-none text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={exportStart} onChange={e=>setExportStart(e.target.value)}/>
                 <span className="text-slate-400 font-bold">至</span>
-                <input type="date" className="px-2.5 py-1.5 border rounded-lg focus:outline-none text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={exportEnd} onChange={e=>setExportEnd(e.target.value)}/>
+                <input type="date" className="px-2.5 py-1.5 border rounded-lg focus:outline-none text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={exportEnd} onChange={e=>setExportEnd(e.target.value)}/>
               </div>
               {(exportStart||exportEnd)&&<button onClick={()=>{setExportStart('');setExportEnd('');}} className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg font-bold cursor-pointer text-xs">重置期限</button>}
             </div>
-            <button onClick={handleExportCSV} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start md:self-auto" style={{background:"#2d8a2d"}}>
+            <button onClick={handleExportCSV} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start md:self-auto" style={{background:"#16a34a",color:"#ffffff"}}>
               <Icons.Download size={14}/> 匯出 CSV 報表
             </button>
           </div>
-          <div className="p-4 rounded-xl" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="p-4 rounded-xl" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="relative">
               <Icons.Search size={16} cls="text-slate-400 absolute left-3 top-3"/>
-              <input type="text" placeholder="輸入員編、姓名或書名快速過濾..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} value={borrowSearch} onChange={e=>setBorrowSearch(e.target.value)}/>
+              <input type="text" placeholder="輸入員編、姓名或書名快速過濾..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} value={borrowSearch} onChange={e=>setBorrowSearch(e.target.value)}/>
             </div>
           </div>
-          <div className="rounded-xl overflow-hidden" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="rounded-xl overflow-hidden" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-100 text-xs text-gray-200">
-                <thead className="font-bold text-left" style={{background:"#162616",color:"#6aaa6a"}}>
+                <thead className="font-bold text-left" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                   <tr>{['借閱流水號','圖書詳細規格','借書同仁(員編)','借閱與到期日','實際歸還日','流通狀態'].map((h,i)=><th key={i} scope="col" className="px-6 py-3">{h}</th>)}</tr>
                 </thead>
-                <tbody className="divide-y" style={{background:"#1e301e",borderColor:"#2a4a2a"}}>
+                <tbody className="divide-y" style={{background:"#ffffff",borderColor:"#d1e7d1"}}>
                   {borrowRecords.filter(r=>{const sq=borrowSearch.toLowerCase();const mt=!sq||r.bookId.toLowerCase().includes(sq)||r.bookTitle.toLowerCase().includes(sq)||r.employeeId.toLowerCase().includes(sq)||r.employeeName.toLowerCase().includes(sq);const ms=!exportStart||r.borrowDate>=exportStart;const me=!exportEnd||r.borrowDate<=exportEnd;return mt&&ms&&me;}).map(r=>(
-                    <tr key={r.id} className="text-[11px] hover:bg-green-950">
+                    <tr key={r.id} className="text-[11px] hover:bg-green-50">
                       <td className="px-6 py-3 font-mono text-gray-400">{r.id}</td>
                       <td className="px-6 py-3 font-semibold text-slate-800">[{r.bookId}] {r.bookTitle}</td>
                       <td className="px-6 py-3"><span className="font-bold text-gray-200">{r.employeeName}</span><div className="text-[10px] text-slate-400 font-mono">員編: {r.employeeId}</div></td>
                       <td className="px-6 py-3"><div>借: {r.borrowDate}</div><div className="text-gray-500">至: {r.expectedReturnDate}</div></td>
                       <td className="px-6 py-3 font-bold">{r.actualReturnDate?<span className="text-emerald-600">{r.actualReturnDate}</span>:<span className="text-rose-500">-</span>}</td>
-                      <td className="px-6 py-3">{{returned:<span className="bg-emerald-900 text-emerald-300 font-bold px-2 py-0.5 rounded">已歸還</span>,active:<span className="text-blue-300 bg-blue-900 font-bold px-2 py-0.5 rounded animate-pulse">借用中</span>,lost:<span className="bg-rose-900 text-rose-300 font-bold px-2 py-0.5 rounded">報遺失</span>}[r.status]||null}</td>
+                      <td className="px-6 py-3">{{returned:<span className="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded">已歸還</span>,active:<span className="text-blue-700 bg-blue-100 font-bold px-2 py-0.5 rounded animate-pulse">借用中</span>,lost:<span className="bg-rose-100 text-rose-700 font-bold px-2 py-0.5 rounded">報遺失</span>}[r.status]||null}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -844,7 +844,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
       {/* TAB: AUDIT */}
       {tab==='audit' && (
         <div className="space-y-6">
-          <div className="p-6 rounded-xl space-y-4" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="p-6 rounded-xl space-y-4" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div><h3 className="text-sm font-bold text-white flex items-center gap-1.5"><Icons.ClipboardCheck size={18} cls="text-indigo-600"/> 圖書現場清冊點班 (盤點)</h3><p className="text-xs text-slate-400 mt-1">例行性現場圖書與資料庫狀態校正，可記錄遺失或待修復書籍。</p></div>
               {!isAuditing && <button onClick={handleStartAudit} className="py-2.5 px-5 text-white font-bold rounded-lg text-xs cursor-pointer" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>開始一筆清冊點班</button>}
@@ -856,15 +856,15 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
                   <div className="text-xs font-bold text-slate-800 flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-red-400 animate-pulse inline-block"/> 現場盤點進行中... (受檢: {books.length} 冊)</div>
                   <div className="text-xs text-indigo-700 font-bold bg-indigo-50 px-3 py-1 rounded">在庫: {Object.values(auditSel).filter(s=>s==='present'||s==='borrowed').length} | 遺失: {Object.values(auditSel).filter(s=>s==='missing').length} | 保養: {Object.values(auditSel).filter(s=>s==='maintenance').length}</div>
                 </div>
-                <div className="max-h-72 overflow-y-auto border rounded-lg" style={{borderColor:"#3a6a3a",background:"#1e301e"}}>
+                <div className="max-h-72 overflow-y-auto border rounded-lg" style={{borderColor:"#d1e7d1",background:"#ffffff"}}>
                   <table className="min-w-full divide-y divide-slate-100 text-xs text-gray-200">
-                    <thead className="font-bold text-left sticky top-0" style={{background:"#162616",color:"#6aaa6a"}}>
+                    <thead className="font-bold text-left sticky top-0" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                       <tr><th className="px-4 py-2.5">編號與規格</th><th className="px-4 py-2.5">系統預計狀態</th><th className="px-6 py-2.5 text-center">現場覆核狀態</th></tr>
                     </thead>
-                    <tbody className="divide-y" style={{background:"#1e301e",borderColor:"#2a4a2a"}}>
+                    <tbody className="divide-y" style={{background:"#ffffff",borderColor:"#d1e7d1"}}>
                       {books.map(b=>(
-                        <tr key={b.id} className="hover:bg-green-950">
-                          <td className="px-4 py-2"><div className="font-bold text-white"><span className="font-mono text-slate-500 mr-1.5">[{b.id}]</span>{b.title}</div></td>
+                        <tr key={b.id} className="hover:bg-green-50">
+                          <td className="px-4 py-2"><div className="font-bold text-gray-900"><span className="font-mono text-slate-500 mr-1.5">[{b.id}]</span>{b.title}</div></td>
                           <td className="px-4 py-2">{{available:<span className="text-emerald-700 font-bold">在庫</span>,borrowed:<span className="text-blue-700 font-bold">借出({b.borrowerName})</span>,maintenance:<span className="text-amber-700 font-bold">保養維修</span>,lost:<span className="text-red-700 font-bold">已報失</span>}[b.status]}</td>
                           <td className="px-6 py-2">
                             <div className="flex items-center justify-center gap-1 text-[10px] font-bold">
@@ -878,29 +878,29 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
                     </tbody>
                   </table>
                 </div>
-                <div><label className="block text-xs font-semibold text-slate-600 mb-1.5">點班備註與檢討結論:</label><textarea rows={2} className="w-full p-2.5 border rounded-lg text-xs" style={{background:"#0d1f0d",borderColor:"#3a6a3a",color:"#e8f5e8"}} placeholder="例如: 2026年6月份庫存核對，全數書籍均已歸位。" value={auditNotes} onChange={e=>setAuditNotes(e.target.value)}/></div>
+                <div><label className="block text-xs font-semibold text-slate-600 mb-1.5">點班備註與檢討結論:</label><textarea rows={2} className="w-full p-2.5 border rounded-lg text-xs" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}} placeholder="例如: 2026年6月份庫存核對，全數書籍均已歸位。" value={auditNotes} onChange={e=>setAuditNotes(e.target.value)}/></div>
                 <div className="flex justify-end gap-2.5">
                   <button type="button" onClick={()=>setIsAuditing(false)} className="px-4 py-2 border border-slate-200 bg-white rounded-lg text-slate-600 hover:bg-slate-50 text-xs font-semibold cursor-pointer">放棄點班</button>
-                  <button type="button" onClick={handleSaveAudit} className="px-5 py-2 text-white rounded-lg text-xs font-bold cursor-pointer" style={{background:"#2d8a2d"}}>儲存本期點班報告</button>
+                  <button type="button" onClick={handleSaveAudit} className="px-5 py-2 text-white rounded-lg text-xs font-bold cursor-pointer" style={{background:"#16a34a",color:"#ffffff"}}>儲存本期點班報告</button>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="p-6 rounded-xl space-y-4" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+          <div className="p-6 rounded-xl space-y-4" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <h3 className="text-xs font-bold text-slate-800 flex items-center gap-1.5"><Icons.ClipboardCheck size={16} cls="text-indigo-500"/> 歷史點班盤點報告 ({auditSessions.length} 筆)</h3>
             {auditSessions.length===0 ? <p className="text-xs text-slate-400 py-4 text-center">目前無歷史記錄盤點清冊</p> : (
               <div className="space-y-3.5">
                 {auditSessions.map(s=>(
-                  <div key={s.id} className="p-4 rounded-lg" style={{background:"#162616",border:"1px solid #3a6a3a"}} className=" flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
+                  <div key={s.id} className="p-4 rounded-lg" style={{background:"#f0f9f0",border:"1px solid #d1e7d1"}} className=" flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
                     <div className="space-y-1">
-                      <div className="flex items-center gap-2"><span className="font-mono font-bold bg-green-900 text-green-300 px-2 py-0.5 rounded text-[10px]">ID: {s.id}</span><div className="font-bold text-slate-700 flex items-center gap-1"><Icons.Calendar size={12} cls="text-gray-500"/> 點班日期: {s.auditDate}</div></div>
-                      <p className="text-gray-400">點班者：<strong>{s.auditorName}</strong> ({s.auditorId})</p>
+                      <div className="flex items-center gap-2"><span className="font-mono font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded text-[10px]">ID: {s.id}</span><div className="font-bold text-slate-700 flex items-center gap-1"><Icons.Calendar size={12} cls="text-gray-500"/> 點班日期: {s.auditDate}</div></div>
+                      <p className="text-gray-500">點班者：<strong>{s.auditorName}</strong> ({s.auditorId})</p>
                       <div className="p-2 border border-slate-200 bg-white rounded text-slate-600 italic text-[11px]">「 {s.notes} 」</div>
                     </div>
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                       <div className="text-[11px]"><div className="flex flex-wrap gap-2 font-bold"><span className="text-emerald-600">正常: {s.presentCount}</span><span className="text-red-500">缺失: {s.missingCount}</span><span className="text-amber-600">保養: {s.maintenanceCount}</span></div></div>
-                      <button type="button" onClick={()=>setViewingAudit(s)} className="py-1.5 px-3 text-white font-bold rounded-lg text-[10px] cursor-pointer" style={{background:"#2d6a2d"}}>檢視條目明細</button>
+                      <button type="button" onClick={()=>setViewingAudit(s)} className="py-1.5 px-3 text-white font-bold rounded-lg text-[10px] cursor-pointer" style={{background:"#2d6a2d",color:"#ffffff"}}>檢視條目明細</button>
                     </div>
                   </div>
                 ))}
@@ -915,13 +915,13 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-center justify-center min-h-screen p-4">
             <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm" onClick={()=>setViewingAudit(null)}/>
-            <div className="relative rounded-xl shadow-2xl w-full max-w-xl text-xs" style={{background:"#1e301e",border:"1px solid #3a6a3a"}}>
+            <div className="relative rounded-xl shadow-2xl w-full max-w-xl text-xs" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
               <div className="bg-slate-50 px-5 py-4 border-b flex items-center justify-between">
                 <h3 className="text-sm font-bold text-white">庫存盤點點班明細 [編號: {viewingAudit.id}]</h3>
                 <button onClick={()=>setViewingAudit(null)} className="text-slate-400 hover:text-slate-600 cursor-pointer font-bold">✕</button>
               </div>
               <div className="p-5 space-y-4 max-h-96 overflow-y-auto">
-                <div className="grid grid-cols-2 gap-2 p-3 border rounded-lg" style={{background:"#162616",borderColor:"#3a6a3a",color:"#c8e6c8"}}>
+                <div className="grid grid-cols-2 gap-2 p-3 border rounded-lg" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}}>
                   <div><strong>清帳日期：</strong>{viewingAudit.auditDate}</div>
                   <div><strong>清對總量：</strong>{viewingAudit.totalBooks} 冊</div>
                   <div><strong>點班人員：</strong>{viewingAudit.auditorName} ({viewingAudit.auditorId})</div>
@@ -940,10 +940,10 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
                     </div>
                   </div>
                 </div>
-                <div><span className="font-bold text-gray-200">備註：</span><p className="p-2 border rounded mt-1 font-serif leading-relaxed" style={{background:"#162616",borderColor:"#3a6a3a",color:"#c8e6c8"}}>{viewingAudit.notes}</p></div>
+                <div><span className="font-bold text-gray-200">備註：</span><p className="p-2 border rounded mt-1 font-serif leading-relaxed" style={{background:"#ffffff",borderColor:"#9dc49d",color:"#1a1a1a"}}>{viewingAudit.notes}</p></div>
               </div>
               <div className="bg-slate-50 px-5 py-3.5 flex justify-end border-t">
-                <button type="button" onClick={()=>setViewingAudit(null)} className="px-4 py-2 border font-bold rounded-lg cursor-pointer" style={{borderColor:"#3a6a3a",color:"#a8d5a8",background:"#162616"}}>確認並關閉</button>
+                <button type="button" onClick={()=>setViewingAudit(null)} className="px-4 py-2 border font-bold rounded-lg cursor-pointer" style={{borderColor:"#9dc49d",color:"#2d6a2d",background:"#ffffff"}}>確認並關閉</button>
               </div>
             </div>
           </div>
@@ -1027,17 +1027,17 @@ function App() {
   const handleLogout = () => { setCurrentUser(null); setTab('catalog'); };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-800" style={{backgroundColor:"#1a2a1a"}}>
+    <div className="min-h-screen flex flex-col font-sans text-slate-800" style={{backgroundColor:"#f8f9fa"}}>
       {/* HEADER */}
-      <header className="sticky top-0 z-40 shadow-md" style={{background:"linear-gradient(135deg,#0d1f0d 0%,#1a3a1a 50%,#0d1f0d 100%)",borderBottom:"3px solid #4a8a4a"}}>
+      <header className="sticky top-0 z-40 shadow-md" style={{background:"#ffffff",borderBottom:"3px solid #4a8a4a",boxShadow:"0 2px 8px rgba(0,0,0,0.08)"}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <h1 className="text-base font-bold leading-tight" style={{color:"#c8e6c8"}}>5A 圖書管理系統</h1>
+              <h1 className="text-base font-bold leading-tight" style={{color:"#1a1a1a"}}>5A 圖書管理系統</h1>
             </div>
             <nav className="hidden md:flex gap-1.5 text-xs font-bold">
               {[['catalog','圖書檢索首頁',null],currentUser&&['dashboard','個人借閱書架',null],currentUser&&currentUser.role==='admin'&&['admin','系統後台管理','shield']].filter(Boolean).map(([k,label,ico])=>(
-                <button key={k} onClick={()=>setTab(k)} style={tab===k?{background:'rgba(74,138,74,0.30)',color:'#a8d5a8'}:{color:'#7ab87a'}} className="px-3.5 py-2 rounded-lg cursor-pointer transition-all flex items-center gap-1 hover:opacity-90">
+                <button key={k} onClick={()=>setTab(k)} style={tab===k?{background:'#e8f5e8',color:'#1a5a1a'}:{color:'#2d6a2d'}} className="px-3.5 py-2 rounded-lg cursor-pointer transition-all flex items-center gap-1 hover:opacity-90">
                   {ico&&<Icons.Shield size={12} cls="text-indigo-500"/>}{label}
                 </button>
               ))}
@@ -1046,14 +1046,14 @@ function App() {
               {currentUser ? (
                 <div className="flex items-center gap-2">
                   <div className="hidden sm:block text-right leading-tight">
-                    <div className="font-bold text-white">{currentUser.name}</div>
+                    <div className="font-bold text-gray-900">{currentUser.name}</div>
                     <div className="text-[10px] text-slate-400 font-mono">員編:{currentUser.employeeId}</div>
                   </div>
-                  <button className="p-1.5 rounded-lg cursor-pointer" style={{background:"rgba(255,255,255,0.10)",color:"#c8e6c8",border:"1px solid rgba(74,138,74,0.5)"}} onClick={()=>setTab('dashboard')} title="帳戶中心"><Icons.User size={14}/></button>
-                  <button onClick={handleLogout} className="p-1.5 rounded-lg cursor-pointer" style={{color:"#7ab87a"}} onMouseEnter={e=>e.currentTarget.style.color='#fca5a5'} onMouseLeave={e=>e.currentTarget.style.color='#7ab87a'} title="安全登出"><Icons.LogOut size={14}/></button>
+                  <button className="p-1.5 rounded-lg cursor-pointer" style={{background:"#e8f5e8",color:"#1a5a1a",border:"1px solid #4a8a4a"}} onClick={()=>setTab('dashboard')} title="帳戶中心"><Icons.User size={14}/></button>
+                  <button onClick={handleLogout} className="p-1.5 rounded-lg cursor-pointer" style={{color:"#4a7a4a"}} onMouseEnter={e=>e.currentTarget.style.color='#dc2626'} onMouseLeave={e=>e.currentTarget.style.color='#4a7a4a'} title="安全登出"><Icons.LogOut size={14}/></button>
                 </div>
               ) : (
-                <button onClick={()=>setShowLogin(true)} className="py-1.5 px-3.5 font-bold rounded-lg flex items-center gap-1.5 cursor-pointer shadow-sm" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)",color:"#e8f5e8"}}>
+                <button onClick={()=>setShowLogin(true)} className="py-1.5 px-3.5 font-bold rounded-lg flex items-center gap-1.5 cursor-pointer shadow-sm" style={{background:"#2d6a2d",color:"#ffffff"}}>
                   <Icons.LogIn size={13}/> 登入
                 </button>
               )}
@@ -1064,9 +1064,9 @@ function App() {
 
       {/* MOBILE NAV */}
       {currentUser && (
-        <div className="flex md:hidden text-xs font-bold justify-around py-2.5 px-2" style={{background:"#0d1f0d",borderBottom:"2px solid #4a8a4a"}}>
+        <div className="flex md:hidden text-xs font-bold justify-around py-2.5 px-2" style={{background:"#ffffff",borderBottom:"2px solid #4a8a4a"}}>
           {[['catalog','檢索首頁'],['dashboard','借閱書架'],currentUser.role==='admin'&&['admin','系統後台']].filter(Boolean).map(([k,l])=>(
-            <button key={k} onClick={()=>setTab(k)} style={tab===k?{background:'rgba(74,138,74,0.3)',color:'#a8d5a8'}:{color:'#7ab87a'}} className="py-1 px-3 rounded-md cursor-pointer">{l}</button>
+            <button key={k} onClick={()=>setTab(k)} style={tab===k?{background:'#e8f5e8',color:'#1a5a1a'}:{color:'#2d6a2d'}} className="py-1 px-3 rounded-md cursor-pointer">{l}</button>
           ))}
         </div>
       )}
@@ -1098,11 +1098,11 @@ function App() {
         </div>
       )}
 
-      <footer className="py-6 text-center text-xs" style={{background:"#0d1f0d",borderTop:"2px solid #4a8a4a",color:"#5a8a5a"}}>
+      <footer className="py-6 text-center text-xs" style={{background:"#ffffff",borderTop:"2px solid #4a8a4a",color:"#4a6a4a"}}>
         <div className="max-w-7xl mx-auto px-4 space-y-2">
           <p>內部圖書館管理系統 &copy; 2026. 供單位人員線上查詢與書籍登記流通專用。</p>
           <div className="flex justify-center">
-            <button onClick={()=>setShowConfig(true)} className={`py-1 px-2.5 rounded-full border flex items-center gap-1 font-semibold cursor-pointer transition-all ${sbCfg.isConnected?'bg-emerald-900 border-emerald-600 text-emerald-300 hover:bg-emerald-800':'border-green-700 text-green-400 hover:opacity-80'}`} style={sbCfg.isConnected?{}:{background:'rgba(74,138,74,0.15)'}}>
+            <button onClick={()=>setShowConfig(true)} className={`py-1 px-2.5 rounded-full border flex items-center gap-1 font-semibold cursor-pointer transition-all ${sbCfg.isConnected?'bg-emerald-50 border-emerald-400 text-emerald-700 hover:bg-emerald-100':'border-green-400 text-green-700 hover:bg-green-50'}`} style={sbCfg.isConnected?{}:{background:'#f0fdf0'}}>
               <span className={`w-1.5 h-1.5 rounded-full ${sbCfg.isConnected?'bg-emerald-500 animate-pulse':'bg-amber-400'}`}/>
               {sbCfg.isConnected?'雲端同步中':'LocalStorage 離線'}
               <Icons.Settings size={10} cls="opacity-60 ml-0.5"/>
