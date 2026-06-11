@@ -449,7 +449,7 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
                   <span className="text-xs font-mono font-semibold text-slate-400">編號: {b.id}</span>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-bold text-slate-800 text-base line-clamp-2" title={b.title}>{b.title}</h3>
+                  <h3 className="font-bold text-white text-base line-clamp-2" title={b.title}>{b.title}</h3>
 
                 </div>
                 <div className="pt-2 border-t border-slate-50 flex items-center justify-between text-xs text-slate-400">
@@ -476,7 +476,7 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
                 {filtered.map(b=>(
                   <tr key={b.id} className="hover:bg-green-950">
                     <td className="px-6 py-4 font-mono font-bold text-slate-500">{b.id}</td>
-                    <td className="px-6 py-4"><div className="font-bold text-slate-800 text-sm">{b.title}</div></td>
+                    <td className="px-6 py-4"><div className="font-bold text-white text-sm">{b.title}</div></td>
                     <td className="px-6 py-4"><span className="inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700">{b.category}</span></td>
                     <td className="px-6 py-4"><StatusBadge book={b}/></td>
                     <td className="px-6 py-4 text-right"><ActionBtn book={b}/></td>
@@ -726,7 +726,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
                   {books.filter(b=>{const sq=bookSearch.toLowerCase();return !sq||b.id.toLowerCase().includes(sq)||b.title.toLowerCase().includes(sq);}).map(b=>(
                     <tr key={b.id} className="hover:bg-green-950">
                       <td className="px-6 py-3 font-mono font-bold text-slate-500">{b.id}</td>
-                      <td className="px-6 py-3"><span className="font-bold text-slate-800 text-[13px]">{b.title}</span></td>
+                      <td className="px-6 py-3"><span className="font-bold text-white text-[13px]">{b.title}</span></td>
                       <td className="px-6 py-3"><span className="inline-block px-1.5 py-0.5 bg-indigo-50 border border-indigo-100 rounded text-[10px] text-indigo-700 font-bold">{b.category}</span></td>
                       <td className="px-6 py-3">
                         {{available:<span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-bold">在庫</span>,borrowed:<span className="text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded font-bold">借出</span>,maintenance:<span className="text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded font-bold">保養</span>,lost:<span className="text-red-700 bg-red-50 px-1.5 py-0.5 rounded font-bold">遺失</span>}[b.status]}
