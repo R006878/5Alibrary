@@ -601,7 +601,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
   const [exportEnd, setExportEnd] = useState('');
   const [showBookForm, setShowBookForm] = useState(false);
   const [editingBookId, setEditingBookId] = useState(null);
-  const [bookForm, setBookForm] = useState({id:'',title:'',category:'資訊科技',status:'available'});
+  const [bookForm, setBookForm] = useState({id:'',title:'',category:'內科',status:'available'});
   const [showUserForm, setShowUserForm] = useState(false);
   const [userForm, setUserForm] = useState({employeeId:'',name:'',role:'user',password:''});
   const [userFormErr, setUserFormErr] = useState('');
@@ -623,7 +623,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
       if (books.some(b=>b.id.toLowerCase()===fb.id.toLowerCase())) { alert('書籍編號重複，請換另一個編號。'); return; }
       onAddBook(fb);
     }
-    setBookForm({id:'',title:'',category:'資訊科技',status:'available'}); setShowBookForm(false); setEditingBookId(null);
+    setBookForm({id:'',title:'',category:'內科',status:'available'}); setShowBookForm(false); setEditingBookId(null);
   };
   const startEditBook = (b) => { setEditingBookId(b.id); setBookForm({id:b.id,title:b.title,category:b.category,status:b.status}); setShowBookForm(true); };
 
@@ -683,7 +683,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
               <Icons.Search size={16} cls="text-slate-400 absolute left-3 top-3"/>
               <input type="text" placeholder="輸入書名或書籍編號快速篩選..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-xs" value={bookSearch} onChange={e=>setBookSearch(e.target.value)}/>
             </div>
-            <button onClick={()=>{setEditingBookId(null);setBookForm({id:'',title:'',category:'資訊科技',status:'available'});setShowBookForm(!showBookForm);}} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start sm:self-auto" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>
+            <button onClick={()=>{setEditingBookId(null);setBookForm({id:'',title:'',category:'內科',status:'available'});setShowBookForm(!showBookForm);}} className="py-2 px-4 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer self-start sm:self-auto" style={{background:"linear-gradient(135deg,#2d6a2d,#4a8a4a)"}}>
               <Icons.Plus size={14}/> 新增書籍
             </button>
           </div>
@@ -697,7 +697,7 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
 
                 <div><label className="block text-slate-600 mb-1 font-semibold">類別學門</label>
                   <select className="w-full px-3 py-2 border rounded-lg focus:ring-1 focus:ring-indigo-500 cursor-pointer" value={bookForm.category} onChange={e=>setBookForm({...bookForm,category:e.target.value})}>
-                    {['資訊科技','自我成長','人文心理','思維訓練','商業管理','休閒生活','其它'].map(c=><option key={c} value={c}>{c}</option>)}
+                    {['內科','外科','教學','其他'].map(c=><option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
 
