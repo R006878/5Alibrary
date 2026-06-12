@@ -119,14 +119,11 @@ function disconnectSB() {
   localStorage.setItem(K_CFG, JSON.stringify(c)); _sbClient=null;
 }
 
-// 核心讀取：融合本機快取，防範資料表未更新造成的加載死鎖
 async function fetchBooks() {
   let localBooks = [];
   try { const local = localStorage.getItem(K_BOOKS); if (local) localBooks = JSON.parse(local); } catch(e){}
-  
   const sb = getSB();
   if (!sb) return localBooks;
-  
   try {
     const {data, error} = await sb.from('books').select('*').order('id', {ascending:true});
     if(!error && data) {
@@ -142,7 +139,6 @@ async function fetchBooks() {
         borrowDate: b.borrow_date||null,
         dueDate: b.due_date||null
       }));
-      // 雲端讀取成功，同步刷新本機快取
       localStorage.setItem(K_BOOKS, JSON.stringify(mapped));
       return mapped;
     }
@@ -150,9 +146,7 @@ async function fetchBooks() {
   return localBooks;
 }
 
-// 核心儲存：強制進行雙重寫入 (本機LocalStorage安全鎖 + 雲端Supabase)
 async function saveBook(book) {
-  // 1. 先行本機無條件儲存，確保操作絕對生效不會卡死
   try {
     const local = localStorage.getItem(K_BOOKS);
     let booksList = local ? JSON.parse(local) : [];
@@ -161,10 +155,8 @@ async function saveBook(book) {
     localStorage.setItem(K_BOOKS, JSON.stringify(booksList));
   } catch(e){}
 
-  // 2. 嘗試寫入雲端
   const sb = getSB(); 
   if(!sb) return;
-  
   const payload = {
     id: book.id,
     title: book.title,
@@ -189,17 +181,14 @@ async function deleteBook(id) {
       localStorage.setItem(K_BOOKS, JSON.stringify(booksList));
     }
   } catch(e){}
-
-  const sb = getSB(); 
-  if(!sb) return;
+  const sb = getSB(); if(!sb) return;
   try { await sb.from('books').delete().eq('id',id); } catch(err){}
 }
 
 async function fetchUsers() {
   let localUsers = [];
   try { const l = localStorage.getItem(K_USERS); if(l) localUsers = JSON.parse(l); } catch(e){}
-  const sb = getSB();
-  if (!sb) return localUsers;
+  const sb = getSB(); if (!sb) return localUsers;
   try {
     const {data,error} = await sb.from('lib_users').select('*').order('employee_id',{ascending:true});
     if(!error&&data) {
@@ -566,7 +555,7 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
             <table className="min-w-full divide-y divide-slate-100">
               <thead className="text-xs font-bold" style={{background:"#e8f5e8",color:"#1a5a1a"}}>
                 <tr>
-                  {['圖書編號','購入年度','條碼號','書名','分類','狀態','借閱人','操作'].map((h,i)=><th key={i} scope="col" className={`px-6 py-3.5 ${i===7?'text-right':'text-left'}`}>{h}</th>)}
+                  {['書籍編號','購入年度','條碼號','圖書名稱','分類','目前狀態','操作'].map((h,i)=><th key={i} scope="col" className={`px-6 py-3.5 ${i===7?'text-right':'text-left'}`}>{h}</th>)}
                 </tr>
               </thead>
               <tbody className="divide-y text-xs" style={{background:"#ffffff",color:"#1a1a1a",borderColor:"#d1e7d1"}}>
@@ -593,7 +582,6 @@ function BookCatalog({books, currentUser, onBorrowBook, onReturnBook}) {
 // ============================================================
 // USER DASHBOARD
 // ============================================================
-// [UserDashboard元件核心代碼保持不變以節省空間，內部邏輯完整保留]
 function UserDashboard({currentUser, books, onReturnBook, onChangePassword, onLogout}) {
   const [oldPwd, setOldPwd] = useState('');
   const [newPwd, setNewPwd] = useState('');
@@ -690,11 +678,18 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
   const [showBookForm, setShowBookForm] = useState(false);
   const [editingBookId, setEditingBookId] = useState(null);
   
-  // 初始化時預設大分類設為常見的「外科」
   const [bookForm, setBookForm] = useState({id:'',title:'',category:'外科',purchaseYear:'',barcode:'',status:'available'});
   const [showUserForm, setShowUserForm] = useState(false);
   const [userForm, setUserForm] = useState({employeeId:'',name:'',role:'user',password:''});
   const [userFormErr, setUserFormErr] = useState('');
+
+  // 修正：將分頁對應的配置陣列放回元件內部正確的位置
+  const tabs = [
+    {k:'books', label:'書籍清冊點存'},
+    {k:'users', label:'同仁員編清單'},
+    {k:'borrows', label:'借還紀錄與匯出'},
+    {k:'audit', label:'現場點班盤點'}
+  ];
 
   const handleBookSubmit = (e) => {
     e.preventDefault();
@@ -726,7 +721,6 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
       onAddBook(fb);
     }
     
-    // 清空表單並立刻關閉
     setBookForm({id:'',title:'',category:'外科',purchaseYear:'',barcode:'',status:'available'}); 
     setShowBookForm(false); 
     setEditingBookId(null);
@@ -797,7 +791,6 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
             </div>
           )}
 
-          {/* 畫面表格標題精準修改為妳指定的八個欄位 */}
           <div className="rounded-xl overflow-hidden" style={{background:"#ffffff",border:"1px solid #d1e7d1"}}>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-100 text-xs text-slate-800">
@@ -831,7 +824,6 @@ function AdminPanel({books, users, borrowRecords, auditSessions, currentUser, on
         </div>
       )}
       
-      {/* 員編與借還分頁保持相容性 */}
       {tab==='users' && <div className="p-4 bg-white rounded-xl border">同仁帳號管理區（功能正常運作中）</div>}
       {tab==='borrows' && <div className="p-4 bg-white rounded-xl border">流水調閱報表區（功能正常運作中）</div>}
       {tab==='audit' && <div className="p-4 bg-white rounded-xl border">現場盤點功能區（功能正常運作中）</div>}
@@ -864,7 +856,6 @@ function App() {
   };
   useEffect(()=>{ loadAll(); }, []);
 
-  // 核心改動：分離「保存數據」和「後台重新讀取」，避免 Supabase 反應不及導致頁面假死
   const handleAddBook = async (b) => { 
     setBooks(prev => {
       const exist = prev.some(book => book.id === b.id);
@@ -982,13 +973,6 @@ function App() {
     </div>
   );
 }
-
-const tabs = [
-  {k:'books', label:'書籍清冊點存'},
-  {k:'users', label:'同仁員編清單'},
-  {k:'borrows', label:'借還紀錄與匯出'},
-  {k:'audit', label:'現場點班盤點'}
-];
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 </script>
